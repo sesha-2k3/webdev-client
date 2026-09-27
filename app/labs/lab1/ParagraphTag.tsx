@@ -33,14 +33,14 @@ export default function ParagraphTag() {
 
       {/* On your own: replace the bracketed parts with your own details */}
       <p id="wd-p-your-1">
-        My name is Sesha, and I am from [YOUR HOMETOWN]. I am currently
+        My name is Sesha, and I am from Chennai. I am currently
         pursuing an MS in Computer Science, and outside of classes I enjoy
         working out and playing music.
       </p>
       <p id="wd-p-your-2">
         In this course, I hope to learn how to build full stack web
         applications with Next.js, from designing user interfaces to
-        connecting them with a database. [ADD ANYTHING ELSE YOU WANT TO LEARN.]
+        connecting them with a database.
       </p>
     </div>
   );
