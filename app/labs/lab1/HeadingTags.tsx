@@ -1,12 +1,6 @@
 export default function HeadingTags() {
   return (
     <div id="wd-h-tag">
-      <h1>h1</h1>
-      <h2>h2</h2>
-      <h3>h3</h3>
-      <h4>h4</h4>
-      <h5>h5</h5>
-      <h6>h6</h6>
       <h4>Heading Tags</h4>
       Text documents are often broken up into several sections and subsections.
       Each section is usually prefaced with a short title or heading that
@@ -21,11 +15,30 @@ export default function HeadingTags() {
       <span id="wd-inline-span">span</span> sits in this sentence without
       starting a new line.
 
-        <div id="wd-your-heading">
-            <h4>Sesha</h4>
-            I'm an MS CS student who loves{" "}
-            <span id="wd-your-span">working out</span> and playing music.
-        </div>
+      {/* Practice headings: after the sample paragraph */}
+      <h1>h1</h1>
+      <h2>h2</h2>
+      <h3>h3</h3>
+      <h4>h4</h4>
+      <h5>h5</h5>
+      <h6>h6</h6>
+
+      {/* With AI */}
+      <div id="wd-ai-headings">
+        <h4>Lab notes</h4>
+        This section summarizes the work done in this lab.
+        <h5>What I built</h5>
+        A set of components that demonstrate basic HTML tags.
+        <h6>Next step</h6>
+        Continue with the remaining Lab 1 exercises.
+      </div>
+
+      {/* On your own */}
+      <div id="wd-your-heading">
+        <h4>Sesha</h4>
+        I am an MS CS student who loves{" "}
+        <span id="wd-your-span">working out</span> and playing music.
+      </div>
     </div>
   );
 }

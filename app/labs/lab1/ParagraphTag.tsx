@@ -23,15 +23,24 @@ export default function ParagraphTag() {
         This is the third paragraph. Wrap each paragraph with the paragraph
         tag to tell browsers to render the gaps.
       </p>
+
+      {/* With AI */}
+      <p id="wd-ai-p">
+        Wrapping text in a p tag makes it a block element, and browsers give
+        paragraphs a default top and bottom margin, which creates the vertical
+        gap between them.
+      </p>
+
+      {/* On your own: replace the bracketed parts with your own details */}
       <p id="wd-p-your-1">
-        This paragraph has my information (None): Information information 
-        information Information information information Information 
-        information information Information information information
+        My name is Sesha, and I am from [YOUR HOMETOWN]. I am currently
+        pursuing an MS in Computer Science, and outside of classes I enjoy
+        working out and playing music.
       </p>
       <p id="wd-p-your-2">
-        This second paragraph has my information (None): Information information 
-        information Information information information Information information 
-        information Information information information
+        In this course, I hope to learn how to build full stack web
+        applications with Next.js, from designing user interfaces to
+        connecting them with a database. [ADD ANYTHING ELSE YOU WANT TO LEARN.]
       </p>
     </div>
   );
