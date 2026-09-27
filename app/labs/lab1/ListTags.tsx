@@ -17,7 +17,7 @@ export default function ListTags() {
 
       <h5>Ordered List Tag</h5>
       How to make chicken fried rice:
-      <ol id="wd-chickenfriedrice">
+      <ol id="wd-your-favorite-recipe">
         <li>Marinate the chicken using your favorite spices</li>
         <li>Slice the onions</li>
         <li>Pour oil in a wok-like pan and heat</li>
@@ -29,11 +29,11 @@ export default function ListTags() {
       </ol>
 
       <h5>Ordered List Tag</h5>
-      My fav movies:
-      <ul>
-        <li>Ford v Ferrari</li>
-        <li>Shawshank Redemption</li>
-        <li>The Dark knight series</li>
+      My favorite books:
+      <ul id="wd-your-books">
+        <li>The DaVince Code</li>
+        <li>HyperFocus</li>
+        <li>Meditations</li>
       </ul>
     </div>
   );

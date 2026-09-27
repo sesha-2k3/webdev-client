@@ -21,10 +21,10 @@ export default function HeadingTags() {
       <span id="wd-inline-span">span</span> sits in this sentence without
       starting a new line.
 
-        <div id="wd-my-heading">
+        <div id="wd-your-heading">
             <h4>Sesha</h4>
             I'm an MS CS student who loves{" "}
-            <span id="wd-my-span">working out</span> and playing music.
+            <span id="wd-your-span">working out</span> and playing music.
         </div>
     </div>
   );

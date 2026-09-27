@@ -23,12 +23,12 @@ export default function ParagraphTag() {
         This is the third paragraph. Wrap each paragraph with the paragraph
         tag to tell browsers to render the gaps.
       </p>
-      <p id="wd-mypara-1">
+      <p id="wd-p-your-1">
         This paragraph has my information (None): Information information 
         information Information information information Information 
         information information Information information information
       </p>
-      <p id="wd-mypara-2">
+      <p id="wd-p-your-2">
         This second paragraph has my information (None): Information information 
         information Information information information Information information 
         information Information information information
