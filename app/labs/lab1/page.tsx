@@ -1,4 +1,5 @@
 import HeadingTags from "./HeadingTags";
+import ParagraphTag from "./ParagraphTag";
 
 export default function Lab1() {
   return (
