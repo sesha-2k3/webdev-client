@@ -7,7 +7,8 @@ export default function Lab1() {
       <h2>Lab 1</h2>
       <h3>HTML Examples</h3>
       <HeadingTags />
-      {/* do the next exercise here */}
+      <ParagraphTag />
+      
     </div>
   );
 }
