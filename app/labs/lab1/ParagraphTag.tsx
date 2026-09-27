@@ -24,14 +24,12 @@ export default function ParagraphTag() {
         tag to tell browsers to render the gaps.
       </p>
 
-      {/* With AI */}
       <p id="wd-ai-p">
         Wrapping text in a p tag makes it a block element, and browsers give
         paragraphs a default top and bottom margin, which creates the vertical
         gap between them.
       </p>
 
-      {/* On your own: replace the bracketed parts with your own details */}
       <p id="wd-p-your-1">
         My name is Sesha, and I am from Chennai. I am currently
         pursuing an MS in Computer Science, and outside of classes I enjoy

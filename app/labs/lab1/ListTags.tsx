@@ -15,7 +15,6 @@ export default function ListTags() {
         <li>Serve and enjoy!</li>
       </ol>
 
-      {/* On your own: favorite recipe */}
       My favorite recipe, chicken fried rice:
       <ol id="wd-your-favorite-recipe">
         <li>Marinate the chicken using your favorite spices</li>
@@ -38,7 +37,6 @@ export default function ListTags() {
         <li>The Forever War</li>
       </ul>
 
-      {/* On your own: favorite books */}
       Your favorite books (in no particular order)
       <ul id="wd-your-books">
         <li>The Da Vinci Code</li>
@@ -46,7 +44,6 @@ export default function ListTags() {
         <li>Meditations</li>
       </ul>
 
-      {/* With AI */}
       HTML tags from this chapter:
       <ul id="wd-ai-html-tags">
         <li>h1: the largest heading</li>

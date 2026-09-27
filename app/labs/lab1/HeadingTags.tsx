@@ -15,7 +15,6 @@ export default function HeadingTags() {
       <span id="wd-inline-span">span</span> sits in this sentence without
       starting a new line.
 
-      {/* Practice headings: after the sample paragraph */}
       <h1>h1</h1>
       <h2>h2</h2>
       <h3>h3</h3>
@@ -23,7 +22,6 @@ export default function HeadingTags() {
       <h5>h5</h5>
       <h6>h6</h6>
 
-      {/* With AI */}
       <div id="wd-ai-headings">
         <h4>Lab notes</h4>
         This section summarizes the work done in this lab.
@@ -33,7 +31,6 @@ export default function HeadingTags() {
         Continue with the remaining Lab 1 exercises.
       </div>
 
-      {/* On your own */}
       <div id="wd-your-heading">
         <h4>Sesha</h4>
         I am an MS CS student who loves{" "}

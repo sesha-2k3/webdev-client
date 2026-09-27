@@ -82,7 +82,6 @@ export default function Tables() {
         </tfoot>
       </table>
 
-      {/* On your own: replace the bracketed placeholders with your real courses */}
       <h5>My Courses This Term</h5>
       <table id="wd-your-table" border={1} width="100%">
         <thead>
