@@ -1,6 +1,12 @@
 export default function HeadingTags() {
   return (
     <div id="wd-h-tag">
+      <h1>h1</h1>
+      <h2>h2</h2>
+      <h3>h3</h3>
+      <h4>h4</h4>
+      <h5>h5</h5>
+      <h6>h6</h6>
       <h4>Heading Tags</h4>
       Text documents are often broken up into several sections and subsections.
       Each section is usually prefaced with a short title or heading that
