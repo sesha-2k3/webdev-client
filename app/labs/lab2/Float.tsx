@@ -3,7 +3,6 @@ const STARSHIP =
 const LOREM =
   "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius hic reprehenderit doloremque adipisci iste deserunt. Inventore, hic. Esse nihil unde aut, dignissimos eos consequatur veniam distinctio?";
 
-/* eslint-disable @next/next/no-img-element */
 export default function Float() {
   return (
     <div id="wd-float-divs">
@@ -33,7 +32,6 @@ export default function Float() {
         <div className="wd-float-done" />
       </div>
 
-      {/* With AI */}
       <div>
         <div id="wd-ai-float" className="wd-float-right wd-dimension-landscape wd-bg-color-green wd-fg-color-white">
           AI float
@@ -42,7 +40,6 @@ export default function Float() {
         <div className="wd-float-done" />
       </div>
 
-      {/* On your own: first float above is right, so this one floats left */}
       <div>
         <img className="wd-float-left" src="/images/teslabot.jpg" alt="Teslabot" />
         I lift weights four days a week and code the rest of the time. This

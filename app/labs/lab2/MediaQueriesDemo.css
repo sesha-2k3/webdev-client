@@ -3,7 +3,6 @@
   color: white;
   padding: 1rem;
 }
-/* Keeps the Lab 2 navy h2 rule from painting a band inside this demo */
 .wd-media-queries-demo h2 {
   background-color: transparent;
   color: inherit;
@@ -19,7 +18,6 @@
   text-decoration: underline;
 }
 
-/* With AI */
 @media (max-width: 749px) {
   .wd-media-queries-demo {
     background-color: purple;
@@ -42,7 +40,6 @@
     background-color: yellow;
     color: black;
   }
-  /* Same specificity as the default highlight — must clear it here */
   .wd-media-queries-demo li.wd-mq-rule-default {
     opacity: 0.55;
     font-weight: normal;
@@ -87,7 +84,6 @@
   }
 }
 
-/* On your own: comes last, so it overrides the 1250px block from 1600px up */
 @media (min-width: 1600px) {
   .wd-media-queries-demo {
     background-color: black;

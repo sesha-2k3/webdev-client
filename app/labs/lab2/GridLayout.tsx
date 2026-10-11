@@ -21,7 +21,6 @@ export default function GridLayout() {
           <h3>Side bar</h3>
         </div>
       </div>
-      {/* With AI */}
       <div id="wd-ai-grid" className="wd-grid-row">
         <div className="wd-grid-col-third-page wd-bg-color-red">
           <h3>AI one third</h3>
@@ -30,7 +29,6 @@ export default function GridLayout() {
           <h3>AI two thirds</h3>
         </div>
       </div>
-      {/* On your own: three equal thirds */}
       <div className="wd-grid-row">
         <div className="wd-grid-col-third-page wd-bg-color-yellow">
           <h3>Code</h3>

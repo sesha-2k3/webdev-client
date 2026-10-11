@@ -11,7 +11,6 @@ export default function Margins() {
       <div className="wd-margin-all-around wd-padding-fat wd-border-fat wd-border-yellow wd-border-solid wd-bg-color-blue wd-fg-color-white">
         Margin all around
       </div>
-      {/* On your own */}
       <div className="wd-margin-top-only wd-padding-fat wd-border-fat wd-border-red wd-border-solid wd-bg-color-gray">
         My box: margin top only
       </div>

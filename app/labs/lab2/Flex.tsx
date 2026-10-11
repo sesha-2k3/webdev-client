@@ -10,7 +10,6 @@ export default function Flex() {
         </div>
       </div>
       <br />
-      {/* With AI */}
       <div id="wd-ai-flex" className="wd-flex-row-container">
         <div className="wd-bg-color-gray wd-width-110px">AI pinned</div>
         <div className="wd-bg-color-yellow">AI natural</div>
@@ -19,7 +18,6 @@ export default function Flex() {
         </div>
       </div>
       <br />
-      {/* On your own: reversed, the FIRST column grows and the LAST is pinned */}
       <div className="wd-flex-row-container">
         <div className="wd-bg-color-blue wd-fg-color-white wd-flex-grow-1">
           My column grows

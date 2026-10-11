@@ -11,7 +11,6 @@ export default function MediaQueriesDemo() {
         <li className="wd-mq-rule-default">
           Default is White text on Green background
         </li>
-        {/* With AI */}
         <li className="wd-mq-rule-ai">
           Below 750px: White text on Purple background
         </li>
@@ -24,7 +23,6 @@ export default function MediaQueriesDemo() {
         <li className="wd-mq-rule-1250">
           1250px to 1600px: White text on Red background
         </li>
-        {/* On your own */}
         <li className="wd-mq-rule-1600">
           1600px and up: White text on Black background
         </li>
