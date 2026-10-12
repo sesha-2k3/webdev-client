@@ -27,6 +27,16 @@ export default function Labs() {
             Kambaz
           </Link>
         </li>
+        <li>
+          <a
+            href="https://github.com/sesha-2k3/webdev-client"
+            id="wd-github"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub Repository
+          </a>
+        </li>
       </ul>
     </div>
   );
