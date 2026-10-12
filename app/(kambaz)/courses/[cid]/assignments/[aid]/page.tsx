@@ -1,4 +1,10 @@
 import Link from "next/link";
+
+const field = "w-full rounded border border-neutral-300 bg-white px-3 py-2 text-sm";
+const row = "mb-4 grid grid-cols-1 items-start gap-1 sm:grid-cols-[160px_1fr] sm:gap-4";
+const rowLabel = "text-sm sm:pt-2 sm:text-right";
+const box = "rounded border border-neutral-300 p-4";
+
 export default async function AssignmentEditor({
   params,
 }: {
@@ -6,134 +12,137 @@ export default async function AssignmentEditor({
 }) {
   const { cid } = await params;
   return (
-    <div id="wd-assignments-editor">
-      <label htmlFor="wd-name">Assignment Name</label>
-      <br />
-      <input id="wd-name" defaultValue="A1 - ENV + HTML" />
-      <br />
-      <br />
+    <div id="wd-assignments-editor" className="max-w-3xl">
+      <label htmlFor="wd-name" className="mb-1 block text-sm font-medium">
+        Assignment Name
+      </label>
+      <input id="wd-name" defaultValue="A1 - ENV + HTML" className={`${field} mb-4`} />
+      <label htmlFor="wd-description" className="mb-1 block text-sm font-medium">
+        Description
+      </label>
       <textarea
         id="wd-description"
-        cols={50}
         rows={6}
         defaultValue="The assignment is available online. Submit a link to the landing page of your Web application running on Vercel. The landing page should include your full name and section, links to each of the lab assignments, a link to the Kambaz application, and links to all relevant source code repositories."
+        className={`${field} mb-6`}
       />
-      <br />
-      <table>
-        <tbody>
-          <tr>
-            <td align="right" valign="top">
-              <label htmlFor="wd-points">Points</label>
-            </td>
-            <td>
-              <input id="wd-points" defaultValue={100} />
-            </td>
-          </tr>
-          <tr>
-            <td align="right" valign="top">
-              <label htmlFor="wd-group">Assignment Group</label>
-            </td>
-            <td>
-              <select id="wd-group" defaultValue="ASSIGNMENTS">
-                <option value="ASSIGNMENTS">ASSIGNMENTS</option>
-                <option value="QUIZZES">QUIZZES</option>
-                <option value="EXAMS">EXAMS</option>
-                <option value="PROJECT">PROJECT</option>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td align="right" valign="top">
-              <label htmlFor="wd-display-grade-as">Display Grade as</label>
-            </td>
-            <td>
-              <select id="wd-display-grade-as" defaultValue="PERCENTAGE">
-                <option value="PERCENTAGE">Percentage</option>
-                <option value="POINTS">Points</option>
-                <option value="LETTER">Letter Grade</option>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td align="right" valign="top">
-              <label htmlFor="wd-submission-type">Submission Type</label>
-            </td>
-            <td>
-              <select id="wd-submission-type" defaultValue="ONLINE">
-                <option value="ONLINE">Online</option>
-                <option value="ON_PAPER">On Paper</option>
-                <option value="NO_SUBMISSION">No Submission</option>
-              </select>
-              <br />
-              <br />
-              <label>Online Entry Options</label>
-              <br />
+
+      <div className={row}>
+        <label htmlFor="wd-points" className={rowLabel}>
+          Points
+        </label>
+        <input id="wd-points" defaultValue={100} className={field} />
+      </div>
+
+      <div className={row}>
+        <label htmlFor="wd-group" className={rowLabel}>
+          Assignment Group
+        </label>
+        <select id="wd-group" defaultValue="ASSIGNMENTS" className={field}>
+          <option value="ASSIGNMENTS">ASSIGNMENTS</option>
+          <option value="QUIZZES">QUIZZES</option>
+          <option value="EXAMS">EXAMS</option>
+          <option value="PROJECT">PROJECT</option>
+        </select>
+      </div>
+
+      <div className={row}>
+        <label htmlFor="wd-display-grade-as" className={rowLabel}>
+          Display Grade as
+        </label>
+        <select id="wd-display-grade-as" defaultValue="PERCENTAGE" className={field}>
+          <option value="PERCENTAGE">Percentage</option>
+          <option value="POINTS">Points</option>
+          <option value="LETTER">Letter Grade</option>
+        </select>
+      </div>
+
+      <div className={row}>
+        <label htmlFor="wd-submission-type" className={rowLabel}>
+          Submission Type
+        </label>
+        <div className={box}>
+          <select id="wd-submission-type" defaultValue="ONLINE" className={`${field} mb-4`}>
+            <option value="ONLINE">Online</option>
+            <option value="ON_PAPER">On Paper</option>
+            <option value="NO_SUBMISSION">No Submission</option>
+          </select>
+          <div className="mb-2 text-sm font-semibold">Online Entry Options</div>
+          <div className="flex flex-col gap-3 text-sm">
+            <div className="flex items-center gap-2">
               <input type="checkbox" id="wd-text-entry" />
               <label htmlFor="wd-text-entry">Text Entry</label>
-              <br />
+            </div>
+            <div className="flex items-center gap-2">
               <input type="checkbox" id="wd-website-url" defaultChecked />
               <label htmlFor="wd-website-url">Website URL</label>
-              <br />
+            </div>
+            <div className="flex items-center gap-2">
               <input type="checkbox" id="wd-media-recordings" />
               <label htmlFor="wd-media-recordings">Media Recordings</label>
-              <br />
+            </div>
+            <div className="flex items-center gap-2">
               <input type="checkbox" id="wd-student-annotation" />
               <label htmlFor="wd-student-annotation">Student Annotation</label>
-              <br />
+            </div>
+            <div className="flex items-center gap-2">
               <input type="checkbox" id="wd-file-upload" />
               <label htmlFor="wd-file-upload">File Uploads</label>
-            </td>
-          </tr>
-          <tr>
-            <td align="right" valign="top">
-              <label>Assign</label>
-            </td>
-            <td>
-              <label htmlFor="wd-assign-to">Assign to</label>
-              <br />
-              <input id="wd-assign-to" defaultValue="Everyone" />
-              <br />
-              <br />
-              <label htmlFor="wd-due-date">Due</label>
-              <br />
-              <input type="date" id="wd-due-date" defaultValue="2024-05-13" />
-              <br />
-              <br />
-              <table>
-                <tbody>
-                  <tr>
-                    <td>
-                      <label htmlFor="wd-available-from">Available from</label>
-                      <br />
-                      <input
-                        type="date"
-                        id="wd-available-from"
-                        defaultValue="2024-05-06"
-                      />
-                    </td>
-                    <td>
-                      <label htmlFor="wd-available-until">Until</label>
-                      <br />
-                      <input
-                        type="date"
-                        id="wd-available-until"
-                        defaultValue="2024-05-20"
-                      />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <hr />
-      <Link href={`/courses/${cid}/assignments`} id="wd-cancel">
-        Cancel
-      </Link>{" "}
-      <Link href={`/courses/${cid}/assignments`} id="wd-save">
-        Save
-      </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className={row}>
+        <span className={rowLabel}>Assign</span>
+        <div className={box}>
+          <label htmlFor="wd-assign-to" className="mb-1 block text-sm font-semibold">
+            Assign to
+          </label>
+          <input id="wd-assign-to" defaultValue="Everyone" className={`${field} mb-4`} />
+          <label htmlFor="wd-due-date" className="mb-1 block text-sm font-semibold">
+            Due
+          </label>
+          <input type="date" id="wd-due-date" defaultValue="2024-05-13" className={`${field} mb-4`} />
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div>
+              <label htmlFor="wd-available-from" className="mb-1 block text-sm font-semibold">
+                Available from
+              </label>
+              <input type="date" id="wd-available-from" defaultValue="2024-05-06" className={field} />
+            </div>
+            <div>
+              <label htmlFor="wd-available-until" className="mb-1 block text-sm font-semibold">
+                Until
+              </label>
+              <input type="date" id="wd-available-until" defaultValue="2024-05-20" className={field} />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <label htmlFor="wd-ai-editor-notes" className="mb-1 block text-sm font-medium">
+        Sample notes
+      </label>
+      <textarea id="wd-ai-editor-notes" rows={3} className={`${field} mb-4`} />
+
+      <hr className="my-4 border-neutral-300" />
+      <div className="flex justify-end gap-2">
+        <Link
+          href={`/courses/${cid}/assignments`}
+          id="wd-cancel"
+          className="rounded border border-neutral-300 bg-neutral-100 px-4 py-2 text-sm text-neutral-900 no-underline"
+        >
+          Cancel
+        </Link>
+        <Link
+          href={`/courses/${cid}/assignments`}
+          id="wd-save"
+          className="rounded bg-red-600 px-4 py-2 text-sm text-white no-underline"
+        >
+          Save
+        </Link>
+      </div>
     </div>
   );
 }
