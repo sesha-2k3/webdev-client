@@ -2,7 +2,7 @@
 import { AiOutlineDashboard } from "react-icons/ai";
 import { IoCalendarOutline } from "react-icons/io5";
 import { LiaBookSolid } from "react-icons/lia";
-import { FaInbox, FaRegCircleUser, FaFlask, FaCircleQuestion } from "react-icons/fa6";
+import { FaInbox, FaRegCircleUser, FaFlask } from "react-icons/fa6";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -74,14 +74,6 @@ export default function KambazNavigation() {
           </Link>
         );
       })}
-      <Link
-        href="/labs"
-        id="wd-ai-nav-help"
-        className="block bg-black py-3 text-center text-sm text-white no-underline"
-      >
-        <FaCircleQuestion className="inline-block text-3xl text-red-500" /> <br />
-        Help
-      </Link>
     </nav>
   );
 }
