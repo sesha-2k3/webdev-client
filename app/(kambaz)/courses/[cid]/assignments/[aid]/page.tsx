@@ -1,4 +1,5 @@
 import Link from "next/link";
+import * as db from "../../../../database";
 
 const field = "w-full rounded border border-neutral-300 bg-white px-3 py-2 text-sm";
 const row = "mb-4 grid grid-cols-1 items-start gap-1 sm:grid-cols-[160px_1fr] sm:gap-4";
@@ -10,20 +11,24 @@ export default async function AssignmentEditor({
 }: {
   params: Promise<{ cid: string; aid: string }>;
 }) {
-  const { cid } = await params;
+  const { cid, aid } = await params;
+  const assignment = db.assignments.find((a) => a._id === aid);
   return (
     <div id="wd-assignments-editor" className="max-w-3xl">
       <label htmlFor="wd-name" className="mb-1 block text-sm font-medium">
         Assignment Name
       </label>
-      <input id="wd-name" defaultValue="A1 - ENV + HTML" className={`${field} mb-4`} />
+      <input id="wd-name" defaultValue={assignment?.title ?? ""} className={`${field} mb-2`} />
+      <p id="wd-assignment-id" className="mb-4 text-sm text-neutral-600">
+        Assignment id: {aid}
+      </p>
       <label htmlFor="wd-description" className="mb-1 block text-sm font-medium">
         Description
       </label>
       <textarea
         id="wd-description"
         rows={6}
-        defaultValue="The assignment is available online. Submit a link to the landing page of your Web application running on Vercel. The landing page should include your full name and section, links to each of the lab assignments, a link to the Kambaz application, and links to all relevant source code repositories."
+        defaultValue={assignment?.description ?? ""}
         className={`${field} mb-6`}
       />
 
@@ -31,7 +36,7 @@ export default async function AssignmentEditor({
         <label htmlFor="wd-points" className={rowLabel}>
           Points
         </label>
-        <input id="wd-points" defaultValue={100} className={field} />
+        <input id="wd-points" defaultValue={assignment?.points ?? 100} className={field} />
       </div>
 
       <div className={row}>
@@ -103,13 +108,23 @@ export default async function AssignmentEditor({
           <label htmlFor="wd-due-date" className="mb-1 block text-sm font-semibold">
             Due
           </label>
-          <input type="date" id="wd-due-date" defaultValue="2024-05-13" className={`${field} mb-4`} />
+          <input
+            type="date"
+            id="wd-due-date"
+            defaultValue={assignment?.due}
+            className={`${field} mb-4`}
+          />
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
               <label htmlFor="wd-available-from" className="mb-1 block text-sm font-semibold">
                 Available from
               </label>
-              <input type="date" id="wd-available-from" defaultValue="2024-05-06" className={field} />
+              <input
+                type="date"
+                id="wd-available-from"
+                defaultValue={assignment?.available}
+                className={field}
+              />
             </div>
             <div>
               <label htmlFor="wd-available-until" className="mb-1 block text-sm font-semibold">
