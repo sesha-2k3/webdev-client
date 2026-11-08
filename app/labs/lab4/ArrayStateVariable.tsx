@@ -24,10 +24,10 @@ export default function ArrayStateVariable() {
       <button
         type="button"
         onClick={() => setArray([1, 2, 3, 4, 5])}
-        id="wd-array-start-over-click"
+        id="wd-my-clear-array-click"
         className="me-2 mb-2 rounded bg-blue-600 px-3 py-1.5 text-sm font-medium text-white"
       >
-        Start Over
+        Clear
       </button>
       <button
         type="button"

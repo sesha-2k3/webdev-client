@@ -27,10 +27,10 @@ export default function ChildStateComponent({
       <button
         type="button"
         onClick={() => setCounter(123)}
-        id="wd-back-to-123-child-state-click"
+        id="wd-my-reset-child-state-click"
         className="me-2 rounded bg-blue-600 px-3 py-1.5 text-sm font-medium text-white"
       >
-        Back to 123
+        Reset
       </button>
       <button
         type="button"

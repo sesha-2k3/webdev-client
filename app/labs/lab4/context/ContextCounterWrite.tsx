@@ -24,10 +24,10 @@ export default function ContextCounterWrite() {
       <button
         type="button"
         onClick={() => setCount(7)}
-        id="wd-context-back-to-seven-click"
+        id="wd-context-my-reset-click"
         className="me-2 rounded bg-blue-600 px-3 py-1.5 text-sm font-medium text-white"
       >
-        Back to 7
+        Reset
       </button>
       <button
         type="button"

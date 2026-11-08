@@ -27,6 +27,12 @@ export default function ObjectStateVariable() {
         className="mt-2 block w-full max-w-sm rounded border border-neutral-300 px-3 py-1.5"
         value={person.city}
         onChange={(e) => setPerson({ ...person, city: e.target.value })}
+        id="wd-person-my-city"
+      />
+      <input
+        className="mt-2 block w-full max-w-sm rounded border border-neutral-300 px-3 py-1.5"
+        value={person.city}
+        onChange={(e) => setPerson({ ...person, city: e.target.value })}
         id="wd-person-city"
       />
       <hr />
