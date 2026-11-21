@@ -4,31 +4,18 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAccountContext } from "../AccountContext";
+import * as client from "../client";
 
 export default function Signup() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [user, setUser] = useState({ username: "", password: "" });
   const { setCurrentUser } = useAccountContext();
   const router = useRouter();
 
-  const signup = () => {
-    if (!username || !password) return;
-    setCurrentUser({
-      _id: crypto.randomUUID(),
-      username,
-      password,
-      firstName: "",
-      lastName: "",
-      email: "",
-      role: "STUDENT",
-      loginId: "",
-      section: "",
-      lastActivity: "",
-      totalActivity: "",
-    });
+  const signup = async () => {
+    const current = await client.signup(user);
+    setCurrentUser(current);
     router.push("/account/profile");
   };
-
   return (
     <div id="wd-signup-screen" className="max-w-sm">
       <h3 className="mb-3 text-2xl font-semibold">Sign up</h3>
@@ -36,16 +23,16 @@ export default function Signup() {
         id="wd-username"
         placeholder="username"
         className="mb-2 w-full rounded border border-neutral-300 px-3 py-2"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        value={user.username}
+        onChange={(e) => setUser({ ...user, username: e.target.value })}
       />
       <input
         id="wd-password"
         placeholder="password"
         type="password"
         className="mb-2 w-full rounded border border-neutral-300 px-3 py-2"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        value={user.password}
+        onChange={(e) => setUser({ ...user, password: e.target.value })}
       />
       <button
         type="button"
