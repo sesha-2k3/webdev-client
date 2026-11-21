@@ -1,7 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useAssignmentsStore, type Assignment } from "../../../../store/assignmentsStore";
+import * as client from "../../../client";
 const field = "w-full rounded border border-neutral-300 bg-white px-3 py-2 text-sm";
 const row = "mb-4 grid grid-cols-1 items-start gap-1 sm:grid-cols-[160px_1fr] sm:gap-4";
 const rowLabel = "text-sm sm:pt-2 sm:text-right";
@@ -16,6 +17,7 @@ export default function AssignmentEditor() {
   );
   const addAssignment = useAssignmentsStore((state) => state.addAssignment);
   const updateAssignment = useAssignmentsStore((state) => state.updateAssignment);
+  const setAssignments = useAssignmentsStore((state) => state.setAssignments);
   const [assignment, setAssignment] = useState<Assignment>(
     () =>
       existing ?? {
@@ -29,12 +31,29 @@ export default function AssignmentEditor() {
         until: "",
       },
   );
+  useEffect(() => {
+    const load = async () => {
+      const list: Assignment[] = await client.findAssignmentsForCourse(courseId);
+      setAssignments(list);
+      const found = list.find((a) => a._id === assignmentId);
+      if (found) setAssignment(found);
+    };
+    load();
+  }, [courseId, assignmentId, setAssignments]);
   const backToList = () => router.push(`/courses/${courseId}/assignments`);
-  const save = () => {
+  const onAddAssignment = async () => {
+    const created = await client.createAssignmentForCourse(courseId, assignment);
+    addAssignment(created);
+  };
+  const onUpdateAssignment = async (assignment: Assignment) => {
+    const saved = await client.updateAssignment(assignment);
+    updateAssignment(saved);
+  };
+  const save = async () => {
     if (existing) {
-      updateAssignment({ ...assignment, course: courseId });
+      await onUpdateAssignment({ ...assignment, course: courseId });
     } else {
-      addAssignment({ ...assignment, course: courseId });
+      await onAddAssignment();
     }
     backToList();
   };
