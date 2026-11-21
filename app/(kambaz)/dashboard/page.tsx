@@ -10,6 +10,7 @@ import {
 import { useEnrollmentsStore } from "../store/enrollmentsStore";
 import { useAccountContext } from "../account/AccountContext";
 import * as client from "../courses/client";
+import * as enrollmentsClient from "../enrollments/client";
 
 export default function Dashboard() {
   const courses = useCoursesStore((state) => state.courses);
@@ -20,6 +21,7 @@ export default function Dashboard() {
   const enrollments = useEnrollmentsStore((state) => state.enrollments);
   const enroll = useEnrollmentsStore((state) => state.enroll);
   const unenroll = useEnrollmentsStore((state) => state.unenroll);
+  const setEnrollments = useEnrollmentsStore((state) => state.setEnrollments);
   const [course, setCourse] = useState<Course>(emptyCourse);
   const [showAllCourses, setShowAllCourses] = useState(false);
   const { currentUser } = useAccountContext();
@@ -29,16 +31,32 @@ export default function Dashboard() {
       (enrollment) =>
         enrollment.user === currentUser._id && enrollment.course === courseId,
     );
+  const loadCourses = async () => {
+    setCourses(
+      currentUser && !showAllCourses
+        ? await client.findMyCourses()
+        : await client.fetchAllCourses(),
+    );
+  };
   useEffect(() => {
-    const load = async () => {
-      setCourses(
-        currentUser && !showAllCourses
-          ? await client.findMyCourses()
-          : await client.fetchAllCourses(),
-      );
+    loadCourses();
+  }, [currentUser, showAllCourses]);
+  useEffect(() => {
+    const loadEnrollments = async () => {
+      setEnrollments(currentUser ? await enrollmentsClient.findMyEnrollments() : []);
     };
-    load();
-  }, [currentUser, showAllCourses, setCourses]);
+    loadEnrollments();
+  }, [currentUser, setEnrollments]);
+  const onToggleEnrollment = async (courseId: string) => {
+    if (!currentUser) return;
+    if (isEnrolled(courseId)) {
+      await enrollmentsClient.unenrollFromCourse(currentUser._id, courseId);
+      unenroll(currentUser._id, courseId);
+    } else {
+      enroll(await enrollmentsClient.enrollIntoCourse(currentUser._id, courseId));
+    }
+    await loadCourses();
+  };
   const onAddCourse = async () => {
     const newCourse = await client.createCourse(course);
     addCourse(newCourse);
@@ -143,14 +161,7 @@ export default function Dashboard() {
             onEdit={() => setCourse(c)}
             onDelete={() => onDeleteCourse(c._id)}
             enrolled={currentUser ? isEnrolled(c._id) : undefined}
-            onToggleEnrollment={() => {
-              if (!currentUser) return;
-              if (isEnrolled(c._id)) {
-                unenroll(currentUser._id, c._id);
-              } else {
-                enroll(currentUser._id, c._id);
-              }
-            }}
+            onToggleEnrollment={() => onToggleEnrollment(c._id)}
           />
         ))}
       </div>

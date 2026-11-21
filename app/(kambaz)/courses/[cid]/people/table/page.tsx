@@ -1,17 +1,23 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { FaUserCircle } from "react-icons/fa";
 import * as db from "../../../../database";
-import { useEnrollmentsStore } from "../../../../store/enrollmentsStore";
+import { type Enrollment } from "../../../../store/enrollmentsStore";
+import * as enrollmentsClient from "../../../../enrollments/client";
 import { emptyUser, type User } from "../../../../account/AccountContext";
 export default function PeopleTable() {
   const { cid } = useParams();
   const courseId = String(cid);
   const [users, setUsers] = useState<User[]>(db.users);
   const [person, setPerson] = useState<User>(emptyUser);
-  const enrollments = useEnrollmentsStore((state) => state.enrollments);
-  const enroll = useEnrollmentsStore((state) => state.enroll);
+  const [enrollments, setEnrollments] = useState<Enrollment[]>([]);
+  useEffect(() => {
+    const load = async () => {
+      setEnrollments(await enrollmentsClient.findEnrollmentsForCourse(courseId));
+    };
+    load();
+  }, [courseId]);
   const enrolled = users.filter((usr) =>
     enrollments.some(
       (enrollment) => enrollment.user === usr._id && enrollment.course === courseId,
@@ -20,7 +26,10 @@ export default function PeopleTable() {
   const addPerson = () => {
     const newUser = { ...person, _id: crypto.randomUUID() };
     setUsers([...users, newUser]);
-    enroll(newUser._id, courseId);
+    setEnrollments([
+      ...enrollments,
+      { _id: crypto.randomUUID(), user: newUser._id, course: courseId },
+    ]);
     setPerson(emptyUser);
   };
   return (

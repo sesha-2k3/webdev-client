@@ -8,6 +8,7 @@ import Breadcrumb from "./Breadcrumb";
 import { useCoursesStore } from "../../store/coursesStore";
 import { useEnrollmentsStore } from "../../store/enrollmentsStore";
 import { useAccountContext } from "../../account/AccountContext";
+import * as enrollmentsClient from "../../enrollments/client";
 
 export default function CoursesLayout({
   children,
@@ -21,9 +22,21 @@ export default function CoursesLayout({
   const [showCourseNav, setShowCourseNav] = useState(true);
   const { currentUser } = useAccountContext();
   const enrollments = useEnrollmentsStore((state) => state.enrollments);
+  const setEnrollments = useEnrollmentsStore((state) => state.setEnrollments);
+  const [loadedFor, setLoadedFor] = useState<string | null>(null);
   const router = useRouter();
+  useEffect(() => {
+    if (!currentUser) return;
+    const loadEnrollments = async () => {
+      setEnrollments(await enrollmentsClient.findMyEnrollments());
+      setLoadedFor(currentUser._id);
+    };
+    loadEnrollments();
+  }, [currentUser, setEnrollments]);
+  const loaded = !currentUser || loadedFor === currentUser._id;
   const allowed =
     !currentUser ||
+    !loaded ||
     enrollments.some(
       (enrollment) =>
         enrollment.user === currentUser._id && enrollment.course === courseId,
@@ -35,7 +48,7 @@ export default function CoursesLayout({
     }
   }, [allowed, router]);
 
-  if (!allowed) return null;
+  if (!loaded || !allowed) return null;
 
   return (
     <div id="wd-courses">
