@@ -11,6 +11,8 @@ const LINKS = [
   { href: "/", id: "wd-kambaz-link", label: "Kambaz", match: () => false },
   { href: "/book/ch1", id: "wd-toc-book-link", label: "Chapter 1", match: () => false },
   { href: "https://kambaz.dev/book/ch3", id: "wd-book-ch3-link", label: "Book Ch3", match: () => false },
+  { href: "https://github.com/sesha-2k3/webdev-server", id: "wd-server-github-link", label: "Server GitHub", match: () => false },
+  { href: "https://webdev-server-m6lk.onrender.com", id: "wd-server-render-link", label: "Server on Render", match: () => false },
 ] as const;
 export default function TOC() {
   const pathname = usePathname() ?? "";
